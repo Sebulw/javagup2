@@ -15,3 +15,4 @@ Password Manager is a project created for the purposes of semi-advanced programm
   - [Creational Design Patterns by Baeldung](https://www.baeldung.com/creational-design-patterns)
   - [Read file from resources folder](https://www.mkyong.com/java/java-read-a-file-from-resources-folder/)
   - [OpenCSV by Baeldung](https://www.baeldung.com/opencsv)
+  - [Hexagonal Architecture by Nabrdalik](https://www.youtube.com/watch?v=ma15iBQpmHU)

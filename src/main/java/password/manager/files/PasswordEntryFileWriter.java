@@ -16,9 +16,9 @@ class PasswordEntryFileWriter {
     void writeToFile(String path, List<PasswordEntry> passwordEntries) throws URISyntaxException, IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         CSVWriter csvWriter = new CSVWriter(
-                new FileWriter(new File(path)), ';',
+                new FileWriter(new File(path),  true), ';',
                 DEFAULT_QUOTE_CHARACTER,
-                DEFAULT_ESCAPE_CHARACTER,
+                NO_ESCAPE_CHARACTER,
                 DEFAULT_LINE_END);
         for (PasswordEntry passwordEntry : passwordEntries) {
             csvWriter.writeNext(passwordEntry.toArray());
