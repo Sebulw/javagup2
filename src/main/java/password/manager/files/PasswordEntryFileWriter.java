@@ -9,11 +9,17 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import static com.opencsv.CSVWriter.*;
+
 class PasswordEntryFileWriter {
 
     void writeToFile(String path, List<PasswordEntry> passwordEntries) throws URISyntaxException, IOException {
         ClassLoader classLoader = getClass().getClassLoader();
-        CSVWriter csvWriter = new CSVWriter(new FileWriter(new File(path)), ';', CSVWriter.DEFAULT_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+        CSVWriter csvWriter = new CSVWriter(
+                new FileWriter(new File(path)), ';',
+                DEFAULT_QUOTE_CHARACTER,
+                DEFAULT_ESCAPE_CHARACTER,
+                DEFAULT_LINE_END);
         for (PasswordEntry passwordEntry : passwordEntries) {
             csvWriter.writeNext(passwordEntry.toArray());
         }
