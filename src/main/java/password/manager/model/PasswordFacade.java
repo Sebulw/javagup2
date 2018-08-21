@@ -5,10 +5,10 @@ import password.manager.generators.PasswordGeneratorFacade;
 
 public class PasswordFacade {
 
-    private PasswordGeneratorFacade passwordFacade;
+    private PasswordGeneratorFacade passwordGeneratorFacade;
 
     public PasswordEntry generatePassword(String website, String login, GeneratorType strategy, int length) {
-        String password = passwordFacade.getPassword(length, strategy);
+        String password = passwordGeneratorFacade.getPassword(length, strategy);
         return new PasswordEntry(website, password, login);
     }
 }
