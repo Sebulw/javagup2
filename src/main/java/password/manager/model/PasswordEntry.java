@@ -1,6 +1,6 @@
 package password.manager.model;
 
-class PasswordEntry {
+public class PasswordEntry {
 
     private String website;
     private String password;
