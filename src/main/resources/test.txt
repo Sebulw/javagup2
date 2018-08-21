@@ -1,0 +1,2 @@
+facebook;pass;login
+gmail;pass2;login2
