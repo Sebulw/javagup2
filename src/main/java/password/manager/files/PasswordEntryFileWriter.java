@@ -16,14 +16,14 @@ class PasswordEntryFileWriter {
     private static String PATH = "C:\\PasswordManager\\storage";
 
 
-    void writeToFile(String path, List<PasswordEntry> passwordEntries) throws URISyntaxException, IOException {
+    void writeToFile(String path, List<PasswordEntry> passwordEntries, String securityKey) throws URISyntaxException, IOException {
         CSVWriter csvWriter = new CSVWriter(
                 new FileWriter(Paths.get(PATH + "\\" + path).toFile(), true), ';',
-                DEFAULT_QUOTE_CHARACTER,
+                NO_QUOTE_CHARACTER,
                 NO_ESCAPE_CHARACTER,
                 DEFAULT_LINE_END);
         for (PasswordEntry passwordEntry : passwordEntries) {
-            csvWriter.writeNext(passwordEntry.toArray());
+            csvWriter.writeNext(passwordEntry.toEncryptedArray(securityKey));
         }
         csvWriter.close();
     }

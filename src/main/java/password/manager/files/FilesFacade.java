@@ -26,17 +26,17 @@ public class FilesFacade {
         }
     }
 
-    public List<PasswordEntry> getEntries(String path) {
+    public List<PasswordEntry> getEntries(String key, String path) {
         try {
-            return fileReader.getPasswordEntries(path);
+            return fileReader.getPasswordEntries(key, path);
         } catch (IOException e) {
             return emptyList();
         }
     }
 
-    public void writeToFile(String fileName, List<PasswordEntry> passwordEntries) {
+    public void writeToFile(String key, String fileName, List<PasswordEntry> passwordEntries) {
         try {
-            passwordEntryFileWriter.writeToFile(fileName, passwordEntries);
+            passwordEntryFileWriter.writeToFile(fileName, passwordEntries, key);
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
