@@ -22,13 +22,13 @@ abstract class AbstractFileReader implements FileReader {
     }
 
     @Override
-    public List<PasswordEntry> getPasswordEntries(String path) throws IOException {
+    public List<PasswordEntry> getPasswordEntries(String key, String path) throws IOException {
         List<PasswordEntry> result = new ArrayList<>();
         List<String> lines = read(path);
 
         for (String line : lines) {
             String[] splitResult = line.split(";");
-            PasswordEntry passwordEntry = new PasswordEntry(splitResult[0], splitResult[1], splitResult[2]);
+            PasswordEntry passwordEntry = new PasswordEntry(key, splitResult);
             result.add(passwordEntry);
         }
         return result;

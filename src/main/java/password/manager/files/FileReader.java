@@ -8,6 +8,6 @@ import java.util.List;
 interface FileReader {
 
     List<String> read(String path) throws IOException;
-    List<PasswordEntry> getPasswordEntries(String path) throws IOException;
+    List<PasswordEntry> getPasswordEntries(String key, String path) throws IOException;
 
 }
