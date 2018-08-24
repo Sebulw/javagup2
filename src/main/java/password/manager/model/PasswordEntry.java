@@ -4,7 +4,7 @@ import password.manager.encrypt.EncryptionService;
 
 import java.util.UUID;
 
-public class PasswordEntry {
+public class PasswordEntry implements Cloneable{
 
     private final String uuid = UUID.randomUUID().toString();
     private String website;
@@ -51,7 +51,6 @@ public class PasswordEntry {
 
     public String[] toEncryptedArray(String key) {
 
-
         return EncryptionService.encrypt(key, new String[]{website, password, login});
     }
 
@@ -67,5 +66,46 @@ public class PasswordEntry {
         }
         PasswordEntry that = (PasswordEntry)obj;
         return this.uuid.equals(that.uuid);
+    }
+
+    @Override
+    protected PasswordEntry clone() {
+        return new PasswordEntry(website, password, login);
+    }
+
+    public static class Builder {
+        private String website;
+        private String password;
+        private String login;
+
+        private Builder() {
+        }
+
+        public static Builder of() {
+            return new Builder();
+        }
+
+        public Builder withWebsite(String website) {
+            this.website = website;
+            return this;
+        }
+
+        public Builder withPassword(String password) {
+            this.password = password;
+            return this;
+        }
+        public Builder withLogin(String login) {
+            this.login = login;
+            return this;
+        }
+
+        public PasswordEntry build() {
+            return new PasswordEntry(website, password, login);
+        }
+
+
+
+
+
     }
 }
